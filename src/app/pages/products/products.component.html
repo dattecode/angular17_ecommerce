@@ -1,0 +1,35 @@
+<article class="productCont" id="productCont">
+  <section class="filterCont" [ngClass]="{'filterOn': categoryOn}">
+    <button class="btnCategory" (click)="categoryPush()">Categorys</button>
+    <ul class="filterContUl">
+      <li (click)="allProducts()">products</li>
+      <li (click)="categoryProducts(Category.Electronics)">electronics</li>
+      <li (click)="categoryProducts(Category.Jewelery)">jewelery</li>
+      <li (click)="categoryProducts(Category.MenSClothing)">men's clothing</li>
+      <li (click)="categoryProducts(Category.WomenSClothing)">
+        women's clothing
+      </li>
+    </ul>
+  </section>
+  <section class="descC">
+    @for (product of filterProducts; track $index) {
+    <div class="product">
+      <div class="imgC">
+        <img src="{{ product.image }}" class="imgP" />
+      </div>
+      <div class="des">
+        <h6 class="">
+          {{ product.title }}
+        </h6>
+        <p class="desP">
+          {{ product.description }}
+        </p>
+        <section class="btnSec">
+          <p>Price: $ {{ product.price }}</p>
+          <button (click)="addToCart(product)" class="btnAP">Add Cart</button>
+        </section>
+      </div>
+    </div>
+    }
+  </section>
+</article>

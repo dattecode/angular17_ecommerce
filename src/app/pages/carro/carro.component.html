@@ -1,0 +1,37 @@
+<section class="cartConfirmC" [ngClass]="{confirmOpa: buyConfirm}">
+  <div class="confirmC">
+    <h3>{{ buyText }} {{this.amount | currency}}</h3>
+    <p>°Test e-commerce page thanks for testing°</p>
+    <button (click)="buyCompleted()" class="btnBC">Confirm</button>
+  </div>
+</section>
+<button (click)="changePush()" class="btnCart">
+  <img src="../../../assets/shopping-cart.svg" alt="" />
+</button>
+<article class="cartMC" [ngClass]="{ cartOf: cartPush }">
+  <div class="cartCont">
+    <h4>Your Cart</h4>
+    <div class="productsCart">
+      @for (product of cart; track $index) {
+      <div class="productContCart">
+        <img src="{{ product.image }}" class="imgPC" />
+        <div class="desTPC">
+          <h5 class="productTtc">
+            {{ product.title }}
+          </h5>
+          <div class="desPC">
+            <p>Price: {{ product.price | currency }}</p>
+            <button class="btnDelete" (click)="deleteItem(product.id)">
+              -
+            </button>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+    <div class="buyCC">
+      <p>Total: {{ amount | currency }}</p>
+      <button (click)="checkBuy()" class="buyBtnC">Buy</button>
+    </div>
+  </div>
+</article>
