@@ -4,15 +4,17 @@ import { Observable } from 'rxjs';
 import { ContractProducts } from '../contract/CProducts';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiService {
+  private baseUrl = "https://fakestoreapi.com/products";
+  private _http = inject(HttpClient);
 
-  private baseUrl = "https://fakestoreapi.com/products"
-  private _http = inject(HttpClient)
-
+  /**
+   * Obtiene todos los productos disponibles desde la API externa.
+   * Un Observable de la lista de productos.
+   */
   getApi():Observable<ContractProducts[]>{
-    return this._http.get<ContractProducts[]>(this.baseUrl)
+    return this._http.get<ContractProducts[]>(this.baseUrl);
   }
-
 }

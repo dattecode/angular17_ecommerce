@@ -14,15 +14,19 @@ import { ContractProducts } from './contract/CProducts';
   styleUrl: './app.component.css',
 })
 export class AppComponent implements OnInit {
-  private _userLogic = inject(UserLogicService)
+  private _userLogic = inject(UserLogicService);
   private _apiServices = inject(ApiService);
   title = 'eCommerce_01';
 
+  /**
+   * Al inicializar el componente, se realiza una petición para obtener los productos
+   * y almacenarlos para su uso en otros componentes.
+   */
   ngOnInit(): void {
     this._apiServices.getApi().subscribe({
       next: (data: ContractProducts[] | undefined) => {
         if (data) {
-          this._userLogic.addTheProducts(data)
+          this._userLogic.addTheProducts(data);
         }
       },
       error: (e) => {
